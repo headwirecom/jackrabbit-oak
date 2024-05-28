@@ -149,6 +149,7 @@ class CompactCommand implements Command {
                     .withConcurrency(nThreads.value(options));
 
             if (options.has(tailArg)) {
+                System.out.println("\nStarted TAIL compaction\n");
                 tarBuilder.withGCType(SegmentGCOptions.GCType.TAIL);
             }
             if (options.has(compactor)) {

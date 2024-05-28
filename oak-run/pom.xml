@@ -28,9 +28,11 @@
   </parent>
 
   <artifactId>oak-run</artifactId>
+  <version>1.64.0.1</version>
   <name>Oak Runnable Jar</name>
 
   <properties>
+    <oak-run.version>1.64.0</oak-run.version>
     <jetty.version>9.4.53.v20231009</jetty.version>
     <!--
       Size History:
@@ -195,43 +197,43 @@
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-run-commons</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-jcr</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-api</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-query-spi</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-core-spi</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-lucene</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-blob-cloud</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-segment-tar</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
@@ -241,7 +243,7 @@
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-store-document</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
@@ -252,13 +254,13 @@
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-blob-cloud-azure</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-http</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
@@ -437,42 +439,42 @@
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-run-commons</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-commons</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-blob-plugins</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-blob-cloud</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-blob-cloud-azure</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>oak-store-document</artifactId>
-      <version>${project.version}</version>
+      <version>${oak-run.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
@@ -545,21 +547,21 @@
         <dependency>
           <groupId>org.apache.jackrabbit</groupId>
           <artifactId>oak-core</artifactId>
-          <version>${project.version}</version>
+          <version>${oak-run.version}</version>
           <type>test-jar</type>
           <scope>test</scope>
         </dependency>
         <dependency>
           <groupId>org.apache.jackrabbit</groupId>
           <artifactId>oak-blob-plugins</artifactId>
-          <version>${project.version}</version>
+          <version>${oak-run.version}</version>
           <type>test-jar</type>
           <scope>test</scope>
         </dependency>
         <dependency>
           <groupId>org.apache.jackrabbit</groupId>
           <artifactId>oak-lucene</artifactId>
-          <version>${project.version}</version>
+          <version>${oak-run.version}</version>
           <type>test-jar</type>
           <scope>test</scope>
         </dependency>
