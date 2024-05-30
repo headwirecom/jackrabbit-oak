@@ -113,5 +113,4 @@ public interface NodeStateDiff {
      *         and sibling nodes of all parents are not further compared.
      */
     boolean childNodeDeleted(String name, NodeState before);
-
 }

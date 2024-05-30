@@ -156,11 +156,15 @@ public final class EmptyNodeState implements NodeState {
                     return false;
                 }
             }
+            long count = 0;
             for (ChildNodeEntry after : state.getChildNodeEntries()) {
+                count++;
                 if (!diff.childNodeAdded(after.getName(), after.getNodeState())) {
+                    ((Loggable) diff).info("Handle Diff Against Empty State, count: " + count);
                     return false;
                 }
             }
+            ((Loggable) diff).info("Handle Diff Against Empty State, count: " + count);
         }
         return true;
     }

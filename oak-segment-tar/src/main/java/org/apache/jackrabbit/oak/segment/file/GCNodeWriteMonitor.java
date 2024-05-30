@@ -35,7 +35,7 @@ public class GCNodeWriteMonitor {
      */
     private final long gcProgressLog;
 
-    private final GCMonitor gcMonitor;
+    public final GCMonitor gcMonitor;
 
     /**
      * Start timestamp of compaction (reset at each {@code init()} call).

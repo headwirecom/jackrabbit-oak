@@ -35,6 +35,7 @@ import org.apache.jackrabbit.oak.api.Blob;
 import org.apache.jackrabbit.oak.api.PropertyState;
 import org.apache.jackrabbit.oak.api.Type;
 import org.apache.jackrabbit.oak.commons.Buffer;
+import org.apache.jackrabbit.oak.plugins.memory.Loggable;
 import org.apache.jackrabbit.oak.plugins.memory.MemoryNodeBuilder;
 import org.apache.jackrabbit.oak.plugins.memory.ModifiedNodeState;
 import org.apache.jackrabbit.oak.segment.file.CompactedNodeState;
@@ -133,7 +134,7 @@ public class ClassicCompactor extends Compactor {
         return writer.getPreviouslyCompactedState(nodeState);
     }
 
-    private class CompactDiff implements NodeStateDiff {
+    private class CompactDiff implements NodeStateDiff, Loggable {
         private final @NotNull NodeState base;
         private final @NotNull Canceller hardCanceller;
         private final @NotNull Canceller softCanceller;
@@ -141,6 +142,7 @@ public class ClassicCompactor extends Compactor {
         private @NotNull NodeBuilder builder;
         private @Nullable IOException exception;
         private long modCount;
+        private long logLimit = 10;
 
         private void updated() throws IOException {
             if (++modCount % UPDATE_LIMIT == 0) {
@@ -148,6 +150,13 @@ public class ClassicCompactor extends Compactor {
                 checkNotNull(newBase);
                 builder = new MemoryNodeBuilder(newBase);
             }
+            if (modCount % logLimit == 0) {
+                compactionMonitor.gcMonitor.info("Updated {} modes", modCount);
+            }
+        }
+
+        public void info(String message) {
+            compactionMonitor.gcMonitor.info(message);
         }
 
         CompactDiff(@NotNull NodeState base, @NotNull Canceller hardCanceller, @NotNull Canceller softCanceller) {
