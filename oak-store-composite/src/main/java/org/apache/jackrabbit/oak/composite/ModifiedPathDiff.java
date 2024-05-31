@@ -49,6 +49,8 @@ public class ModifiedPathDiff implements NodeStateDiff {
         this.currentPath = concat(parent.currentPath, name);
     }
 
+    public void info(String msg) {}
+
     @Override
     public boolean propertyAdded(PropertyState after) {
         paths.add(currentPath);

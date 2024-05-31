@@ -198,6 +198,8 @@ public class IndexDefinitionUpdater {
             this.indent = indent;
         }
 
+        public void info(String msg) {}
+
         @Override
         public boolean propertyAdded(PropertyState after) {
             if (!after.getName().startsWith(":")) {

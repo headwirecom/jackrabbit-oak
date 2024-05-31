@@ -214,6 +214,8 @@ class CompositeNodeState extends AbstractNodeState {
             this.includeProperties = includeProperties;
         }
 
+        public void info(String msg) {}
+
         @Override
         public boolean propertyAdded(PropertyState after) {
             if (includeProperties) {
@@ -283,6 +285,8 @@ class CompositeNodeState extends AbstractNodeState {
             this.diff = diff;
             this.base = base;
         }
+
+        public void info(String msg) {}
 
         @Override
         public boolean propertyAdded(PropertyState after) {

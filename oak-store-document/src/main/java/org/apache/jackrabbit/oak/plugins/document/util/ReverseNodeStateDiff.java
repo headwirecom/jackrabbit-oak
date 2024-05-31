@@ -34,6 +34,8 @@ public class ReverseNodeStateDiff implements NodeStateDiff {
         this.diff = requireNonNull(diff);
     }
 
+    public void info(String msg) {}
+
     @Override
     public boolean propertyAdded(PropertyState after) {
         return diff.propertyDeleted(after);

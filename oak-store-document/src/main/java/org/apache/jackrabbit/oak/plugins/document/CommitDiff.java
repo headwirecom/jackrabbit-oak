@@ -65,6 +65,8 @@ class CommitDiff implements NodeStateDiff {
         performBundlingRelatedOperations();
     }
 
+    public void info(String msg) {}
+
     @Override
     public boolean propertyAdded(PropertyState after) {
         setProperty(after);

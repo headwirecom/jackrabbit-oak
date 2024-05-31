@@ -32,7 +32,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.jackrabbit.oak.api.Blob;
-import org.apache.jackrabbit.oak.api.Loggable;
 import org.apache.jackrabbit.oak.api.PropertyState;
 import org.apache.jackrabbit.oak.api.Type;
 import org.apache.jackrabbit.oak.commons.Buffer;
@@ -134,7 +133,7 @@ public class ClassicCompactor extends Compactor {
         return writer.getPreviouslyCompactedState(nodeState);
     }
 
-    private class CompactDiff implements NodeStateDiff, Loggable {
+    private class CompactDiff implements NodeStateDiff {
         private final @NotNull NodeState base;
         private final @NotNull Canceller hardCanceller;
         private final @NotNull Canceller softCanceller;
@@ -142,16 +141,12 @@ public class ClassicCompactor extends Compactor {
         private @NotNull NodeBuilder builder;
         private @Nullable IOException exception;
         private long modCount;
-        private long logLimit = 10;
 
         private void updated() throws IOException {
             if (++modCount % UPDATE_LIMIT == 0) {
                 SegmentNodeState newBase = writeNodeState(builder.getNodeState(), null, false);
                 checkNotNull(newBase);
                 builder = new MemoryNodeBuilder(newBase);
-            }
-            if (modCount % logLimit == 0) {
-                compactionMonitor.gcMonitor.info("Updated {} modes", modCount);
             }
         }
 

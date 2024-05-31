@@ -71,6 +71,8 @@ final class PrintingDiff implements NodeStateDiff {
         this.skipProps = skipProps;
     }
 
+    public void info(String msg) {}
+
     @Override
     public boolean propertyAdded(PropertyState after) {
         if (!skipProps) {

@@ -68,6 +68,8 @@ public class NodeStateSolrServersObserver extends DiffObserver {
             this.name = name;
         }
 
+        public void info(String msg) {}
+
         @Override
         public boolean propertyAdded(PropertyState after) {
             if (isSolrServerNode(name, nodeState)) {

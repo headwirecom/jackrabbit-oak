@@ -70,6 +70,8 @@ public abstract class AbstractRebaseDiff implements NodeStateDiff {
         this.builder = builder;
     }
 
+    public void info(String msg) {}
+
     /**
      * Factory method for creating a rebase handler for the named child of the passed
      * parent builder.

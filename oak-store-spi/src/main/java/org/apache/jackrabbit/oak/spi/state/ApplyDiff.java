@@ -53,6 +53,8 @@ public class ApplyDiff implements NodeStateDiff {
         this.builder = builder;
     }
 
+    public void info(String msg) {}
+
     public void apply(NodeState target) {
         target.compareAgainstBaseState(builder.getNodeState(), this);
     }

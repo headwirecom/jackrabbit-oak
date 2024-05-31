@@ -265,6 +265,8 @@ public abstract class AbstractDecoratedNodeState extends AbstractNodeState {
             this.nodeState = nodeState;
         }
 
+        public void info(String msg) {}
+
         @Override
         public boolean childNodeAdded(final String name, final NodeState after) {
             return diff.childNodeAdded(name, nodeState.decorate(name, after));

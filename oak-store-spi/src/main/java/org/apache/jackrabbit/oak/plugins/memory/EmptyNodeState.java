@@ -19,7 +19,6 @@ package org.apache.jackrabbit.oak.plugins.memory;
 import static java.util.Collections.emptyList;
 import static org.apache.jackrabbit.oak.spi.state.AbstractNodeState.checkValidName;
 
-import org.apache.jackrabbit.oak.api.Loggable;
 import org.apache.jackrabbit.oak.api.PropertyState;
 import org.apache.jackrabbit.oak.spi.state.ChildNodeEntry;
 import org.apache.jackrabbit.oak.spi.state.NodeBuilder;
@@ -39,6 +38,8 @@ public final class EmptyNodeState implements NodeState {
     public static final NodeState MISSING_NODE = new EmptyNodeState(false);
 
     private final boolean exists;
+
+    private static ThreadLocal<Reporter> threadLocal = new ThreadLocal<>();
 
     private EmptyNodeState(boolean exists) {
         this.exists = exists;
@@ -157,15 +158,31 @@ public final class EmptyNodeState implements NodeState {
                     return false;
                 }
             }
+            if(threadLocal.get() == null) {
+                threadLocal.set(new Reporter());
+            }
+            Reporter reporter = threadLocal.get();
+            if(reporter.hitBottom()) {
+                reporter.reset();
+            }
+            reporter.increaseLevel();
             long count = 0;
             for (ChildNodeEntry after : state.getChildNodeEntries()) {
                 count++;
                 if (!diff.childNodeAdded(after.getName(), after.getNodeState())) {
-                    ((Loggable) diff).info("Handle Diff Against Empty State, count: " + count);
+                    reporter.add(count);
+                    reporter.decreaseLevel();
+                    if(reporter.hitBottom()) {
+                        diff.info("Handle Diff Against Empty State (failure), count: " + threadLocal.get().getCount());
+                    }
                     return false;
                 }
             }
-            ((Loggable) diff).info("Handle Diff Against Empty State, count: " + count);
+            reporter.add(count);
+            reporter.decreaseLevel();
+            if(reporter.hitBottom()) {
+                diff.info("Handle Diff Against Empty State, count: " + threadLocal.get().getCount());
+            }
         }
         return true;
     }
@@ -174,6 +191,34 @@ public final class EmptyNodeState implements NodeState {
         return state == EMPTY_NODE || state == MISSING_NODE;
     }
 
+    private static class Reporter {
+        private int level;
+        private long count;
+
+        public void add(long count) {
+            this.count += count;
+        }
+
+        public void increaseLevel() {
+            level++;
+        }
+
+        public void decreaseLevel() {
+            level--;
+        }
+
+        public boolean hitBottom() {
+            return level == 0;
+        }
+
+        public long getCount() {
+            return count;
+        }
+
+        public void reset() {
+            count = 0;
+        }
+    }
     //------------------------------------------------------------< Object >--
 
     public String toString() {

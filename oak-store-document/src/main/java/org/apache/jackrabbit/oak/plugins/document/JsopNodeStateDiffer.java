@@ -33,6 +33,8 @@ class JsopNodeStateDiffer implements NodeStateDiffer {
         this.jsonDiff = diff == null ? "" : diff;
     }
 
+    public void info(String msg) {}
+
     JsopNodeStateDiffer withoutPropertyChanges() {
         withoutPropertyChanges = true;
         return this;

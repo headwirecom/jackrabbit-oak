@@ -27,6 +27,8 @@ import org.apache.jackrabbit.oak.api.PropertyState;
  */
 public class DefaultNodeStateDiff implements NodeStateDiff {
 
+    public void info(String msg) {}
+
     @Override
     public boolean propertyAdded(PropertyState after) {
         return true;

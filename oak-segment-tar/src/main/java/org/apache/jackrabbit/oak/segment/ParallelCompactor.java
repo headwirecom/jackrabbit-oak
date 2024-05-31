@@ -123,6 +123,8 @@ public class ParallelCompactor extends CheckpointCompactor {
             this.onto = checkNotNull(onto);
         }
 
+        public void info(String msg) {}
+
         private class Property {
             private final @NotNull PropertyState state;
 
@@ -205,7 +207,7 @@ public class ParallelCompactor extends CheckpointCompactor {
                 checkNotNull(executorService);
                 if (softCanceller == null) {
                     compactionFuture = executorService.submit(() ->
-                            compactor.compact(before, after, onto, hardCanceller));
+                        compactor.compact(before, after, onto, hardCanceller));
                 } else {
                     checkState(onto.equals(after));
                     compactionFuture = executorService.submit(() ->

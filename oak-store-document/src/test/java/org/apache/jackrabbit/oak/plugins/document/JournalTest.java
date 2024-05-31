@@ -76,6 +76,8 @@ public class JournalTest extends AbstractJournalTest {
             }
         }
 
+        public void info(String msg) {}
+
         public void clear() {
             synchronized(incomingRootStates1) {
                 incomingRootStates1.clear();

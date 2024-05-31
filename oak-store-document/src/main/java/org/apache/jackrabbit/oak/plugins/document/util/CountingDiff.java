@@ -31,6 +31,8 @@ public class CountingDiff implements NodeStateDiff {
 
     private int changes = 0;
 
+    public void info(String msg) {}
+
     public static int countChanges(NodeState before, NodeState after) {
         CountingDiff counter = new CountingDiff();
         after.compareAgainstBaseState(before, counter);

@@ -1115,6 +1115,8 @@ public class DocumentBundlingTest {
                     && AbstractNodeState.compareAgainstBaseState(after, before, new AssertingDiff());
         }
 
+        public void info(String msg) {}
+
         @Override
         public boolean propertyAdded(PropertyState after) {
             if (ignore(after)) return true;

@@ -419,6 +419,9 @@ public class ModifiedNodeState extends AbstractNodeState {
         }
 
         return this.base.compareAgainstBaseState(base, new NodeStateDiff() {
+
+            public void info(String msg) {}
+
             @Override
             public boolean propertyAdded(PropertyState after) {
                 return properties.containsKey(after.getName())

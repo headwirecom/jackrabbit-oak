@@ -199,6 +199,9 @@ public class SecondaryStoreCacheService {
 
     private static class MultiplexingNodeStateDiffer implements NodeStateDiffer {
         private volatile NodeStateDiffer delegate = NodeStateDiffer.DEFAULT_DIFFER;
+
+        public void info(String msg) {}
+
         @Override
         public boolean compare(@NotNull AbstractDocumentNodeState node,
                                @NotNull AbstractDocumentNodeState base, @NotNull NodeStateDiff diff) {

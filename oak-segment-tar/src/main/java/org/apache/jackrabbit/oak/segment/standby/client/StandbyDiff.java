@@ -76,6 +76,8 @@ class StandbyDiff implements NodeStateDiff {
         this.blobProcessor = newBinaryFetcher(store.getBlobStore(), client);
     }
 
+    public void info(String msg) {}
+
     @Override
     public boolean propertyAdded(PropertyState after) {
         builder.setProperty(after);

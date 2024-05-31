@@ -157,6 +157,8 @@ public class EventGenerator {
 
         //------------------------------------------------------< Runnable >--
 
+        public void info(String msg) {}
+
         /**
          * Continues the content diff from the point where this
          * continuation was created.

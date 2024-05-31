@@ -106,6 +106,8 @@ public class PersistingDiff implements NodeStateDiff {
         return new PersistingDiff(fileStore.getWriter(), fileStore.getReader(), fileStore.getBlobStore(), onto).diff(before, after);
     }
 
+    public void info(String msg) {}
+
     private void updated() throws IOException {
         if (modCount % UPDATE_LIMIT == 0) {
             RecordId newBaseId = writer.writeNode(builder.getNodeState(), null);

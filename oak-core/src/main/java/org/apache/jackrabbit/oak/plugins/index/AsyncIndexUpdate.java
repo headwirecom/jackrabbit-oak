@@ -1438,6 +1438,9 @@ public class AsyncIndexUpdate implements Runnable, Closeable {
      */
     private static boolean noVisibleChanges(NodeState before, NodeState after) {
         return after.compareAgainstBaseState(before, new NodeStateDiff() {
+
+            public void info(String msg) {}
+
             @Override
             public boolean propertyAdded(PropertyState after) {
                 return isHidden(after.getName());

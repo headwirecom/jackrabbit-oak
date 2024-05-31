@@ -39,6 +39,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class LoggingHook implements CommitHook, NodeStateDiff {
 
+    public void info(String msg) {}
+
     private final Consumer<String> writer;
 
     private LoggingHook(final Consumer<String> writer) {

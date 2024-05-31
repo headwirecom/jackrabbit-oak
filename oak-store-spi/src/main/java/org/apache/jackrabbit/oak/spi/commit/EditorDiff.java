@@ -75,6 +75,8 @@ public class EditorDiff implements NodeStateDiff {
 
     //-------------------------------------------------< NodeStateDiff >--
 
+    public void info(String msg) {}
+
     @Override
     public boolean propertyAdded(PropertyState after) {
         try {

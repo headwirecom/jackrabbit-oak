@@ -40,6 +40,10 @@ public class CancelableDiff implements NodeStateDiff {
         this.canceled = canceled;
     }
 
+    public void info(String msg) {
+        this.delegate.info(msg);
+    }
+
     @Override
     public final boolean propertyAdded(PropertyState after) {
         if (canceled.get()) {

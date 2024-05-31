@@ -69,6 +69,8 @@ public class JsopDiff implements NodeStateDiff {
         this("/", Integer.MAX_VALUE);
     }
 
+    public void info(String msg) {}
+
     /**
      * Create the JSOP diff between {@code before} and {@code after} for
      * debugging purposes.

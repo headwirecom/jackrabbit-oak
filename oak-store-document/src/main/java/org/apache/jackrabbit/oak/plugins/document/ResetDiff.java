@@ -56,6 +56,8 @@ class ResetDiff implements NodeStateDiff {
         this.operations = checkNotNull(operations);
     }
 
+    public void info(String msg) {}
+
     @Override
     public boolean propertyAdded(PropertyState after) {
         getUpdateOp().removeMapEntry(after.getName(), revision);

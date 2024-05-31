@@ -57,6 +57,8 @@ public class EqualsDiff implements NodeStateDiff {
         });
     }
 
+    public void info(String msg) {}
+
     @Override
     public boolean propertyAdded(PropertyState after) {
         return false;

@@ -64,6 +64,8 @@ final class PrintingDiff implements NodeStateDiff {
         this.path = path;
     }
 
+    public void info(String msg) {}
+
     @Override
     public boolean propertyAdded(PropertyState after) {
         pw.println("    + " + toString(after));
