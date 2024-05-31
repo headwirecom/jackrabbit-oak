@@ -19,6 +19,7 @@ package org.apache.jackrabbit.oak.plugins.memory;
 import static java.util.Collections.emptyList;
 import static org.apache.jackrabbit.oak.spi.state.AbstractNodeState.checkValidName;
 
+import org.apache.jackrabbit.oak.api.Loggable;
 import org.apache.jackrabbit.oak.api.PropertyState;
 import org.apache.jackrabbit.oak.spi.state.ChildNodeEntry;
 import org.apache.jackrabbit.oak.spi.state.NodeBuilder;
